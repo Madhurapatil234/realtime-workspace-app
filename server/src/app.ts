@@ -4,13 +4,14 @@ import dotenv from "dotenv";
 
 import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
+import workspaceRoutes from "./routes/workspaceRoutes";
 import { protect } from "./middleware/authMiddleware";
 
 dotenv.config();
 
 const app = express();
 
-// Database Connection
+// Connect Database
 connectDB();
 
 // Middleware
@@ -19,12 +20,14 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/workspaces", workspaceRoutes);
 
 // Home Route
 app.get("/", (req, res) => {
   res.send("Backend Running Successfully");
 });
 
+// Test Route
 app.get("/test", (req, res) => {
   res.json({
     message: "Test Route Working",
