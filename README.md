@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Real-Time B2B SaaS Collaboration Workspace
 
 ## Project Overview
