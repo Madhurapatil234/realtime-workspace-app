@@ -35,7 +35,7 @@ export const getAllWorkspaces = async (
   res: Response
 ) => {
   try {
-    const workspaces = await Workspace.find();
+   const workspaces = await Workspace.find().select("-__v");
 
     res.status(200).json({
       count: workspaces.length,
