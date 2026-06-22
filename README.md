@@ -1,174 +1,211 @@
+# 🚀 Realtime Workspace App
 
-# Real-Time B2B SaaS Collaboration Workspace
+A full-stack real-time collaboration platform that enables users to create workspaces, manage team communication, and exchange messages instantly using modern web technologies.
 
-## Project Overview
+---
 
-A Slack/Notion-inspired real-time collaboration platform built as part of the Infotact Technical Internship Program. The application aims to provide workspace management, team communication, and document collaboration using the modern MERN stack.
+# 📌 Project Overview
 
-## Technology Stack
+Realtime Workspace App is designed to provide a collaborative environment where multiple users can:
 
-### Frontend
+* Register and authenticate securely
+* Create and manage workspaces
+* Join workspace discussions
+* Exchange real-time messages
+* Collaborate efficiently within teams
 
-* React 19
-* TypeScript
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+* React
 * Vite
 * Tailwind CSS
+* React Router DOM
+* Axios
 
-### Backend
+## Backend
 
 * Node.js
 * Express.js
 * TypeScript
 
-## Week 1 Progress
+## Database
 
-### Completed Tasks
+* MongoDB
+* Mongoose
 
-#### Project Setup
+## Authentication & Security
 
-* Created GitHub repository
-* Initialized project structure with separate client and server folders
-* Configured Git version control
+* JWT Authentication
+* bcryptjs Password Hashing
+* Protected Routes Middleware
 
-#### Frontend Setup
+---
 
-* React + TypeScript application created using Vite
-* Tailwind CSS integrated
-* Basic Login UI created
+# 📂 Project Structure
 
-#### Backend Setup
-
-* Express.js server configured
-* TypeScript backend configured
-* CORS enabled
-* JSON middleware configured
-* Server successfully running on Port 5000
-
-#### Authentication Module
-
-* Created authentication controller
-* Created authentication routes
-* Implemented Register API endpoint
-* Implemented Login API endpoint
-* Successfully tested APIs using Thunder Client
-
-## Current API Endpoints
-
-### Register User
-
-POST /api/auth/register
-
-### Login User
-
-POST /api/auth/login
-
-## Project Structure
-
-realtime-workspace-app/
-
-├── client/
-
-│   ├── src/
-
-│   └── public/
-
+```bash
+realtime-workspace-app
 │
-
-├── server/
-
-│   ├── src/
-
-│   │   ├── controllers/
-
-│   │   ├── routes/
-
+├── client
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── services
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   │
+│   ├── package.json
+│   └── vite.config.ts
+│
+├── server
+│   ├── src
+│   │   ├── config
+│   │   │   └── db.ts
+│   │   │
+│   │   ├── controllers
+│   │   │   ├── authController.ts
+│   │   │   └── workspaceController.ts
+│   │   │
+│   │   ├── middleware
+│   │   │   └── authMiddleware.ts
+│   │   │
+│   │   ├── models
+│   │   │   ├── User.ts
+│   │   │   ├── Workspace.ts
+│   │   │   └── Message.ts
+│   │   │
+│   │   ├── routes
+│   │   │   ├── authRoutes.ts
+│   │   │   └── workspaceRoutes.ts
+│   │   │
 │   │   └── app.ts
-
-│   └── package.json
-
+│   │
+│   ├── package.json
+│   └── .env
 │
-
 └── README.md
+```
 
-## Upcoming Tasks
+---
 
-### Week 1 Remaining
+# 🔐 Authentication Flow
 
-* MongoDB Integration
-* User Model Creation
-* Password Hashing using bcrypt
+1. User Registration
+2. Password Hashing using bcryptjs
+3. JWT Token Generation
+4. Protected Route Access
+5. Token Verification Middleware
+
+---
+
+# 🗄️ Database Models
+
+## User
+
+* name
+* email
+* password
+
+## Workspace
+
+* name
+* description
+* owner
+* members
+
+## Message
+
+* sender
+* workspace
+* content
+* timestamp
+
+---
+
+# ✅ Week 1 Progress Completed
+
+### Backend Setup
+
+* Express.js + TypeScript configured
+* MongoDB integration completed
+* Environment variables configured
+
+### Authentication
+
+* User Registration API
+* User Login API
+* Password Hashing (bcryptjs)
 * JWT Authentication
 
-### Future Development
+### Frontend Setup
 
-* Workspace Management
-* Role-Based Access Control (RBAC)
-* Real-Time Chat using Socket.IO
-* Redis Integration
-* Docker Deployment
+* React application initialized using Vite
+* Tailwind CSS configured
+* Monorepo structure established
 
-## Author
+---
+
+# ✅ Week 2 Progress Completed
+
+### Database Design
+
+* User Schema
+* Workspace Schema
+* Message Schema
+
+### REST APIs
+
+* Create Workspace API
+* Get All Workspaces API
+
+### Security
+
+* JWT Middleware
+* Protected Routes
+* Route Authorization
+
+### Testing
+
+* API Testing using Thunder Client
+* MongoDB Integration Verification
+* Authentication Testing
+
+---
+
+# 🚀 Upcoming Development (Week 3)
+
+* React Authentication UI
+* Login Page
+* Registration Page
+* Dashboard
+* Workspace Management UI
+* Socket.IO Integration
+* Real-Time Messaging
+
+---
+
+# 🎯 Current Status
+
+| Module          | Status         |
+| --------------- | -------------- |
+| Authentication  | ✅ Completed    |
+| Database Models | ✅ Completed    |
+| REST APIs       | ✅ Completed    |
+| JWT Security    | ✅ Completed    |
+| Frontend UI     | 🚧 In Progress |
+| Real-Time Chat  | ⏳ Upcoming     |
+
+---
+
+# 👨‍💻 Author
 
 Madhura Patil
 
-Infotact Technical Internship Program
+Data Science Student | Full Stack Developer
 
-# Real-Time B2B SaaS Collaboration Workspace
-
-## Week 1 Completed
-
-### Frontend
-- React 19
-- Vite
-- TypeScript
-- Tailwind CSS
-
-### Backend
-- Express.js
-- TypeScript
-- MongoDB
-- JWT Authentication
-- bcrypt Password Hashing
-
-### Features
-- User Registration API
-- User Login API
-- Protected Routes
-=======
-# Real-Time B2B SaaS Collaboration Workspace
-
-## Week 1 Progress
-
-### Frontend
-
-* React 19
-* Vite
-* TypeScript
-* Tailwind CSS
-
-### Backend
-
-* Node.js
-* Express.js
-* TypeScript
-* MongoDB
-* JWT Authentication
-* bcrypt Password Hashing
-
-### Features Implemented
-
-* User Model
-* MongoDB Connection
-* Authentication Routes
-* Register API
-* Login API
-* JWT Middleware
-* Protected Routes
-
-### Project Structure
-
-* client/
-* server/
-
-Week 1 focuses on project setup, authentication, and database connectivity.
->>>>>>> 96e6f8078e93e9f1ade4d860235d85f3608b568f
+Internship Project: Realtime Workspace App
