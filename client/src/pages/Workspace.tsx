@@ -1,8 +1,22 @@
+import { useState } from "react";
+import socket from "../services/socket";
+
 function Workspace() {
+
+  const [message, setMessage] = useState("");
+
+  const sendMessage = () => {
+
+    if (message.trim() === "") return;
+
+    socket.emit("chat message", message);
+
+    setMessage("");
+  };
+
   return (
     <div className="flex h-screen">
 
-      {/* Sidebar */}
       <div className="w-64 bg-gray-900 text-white p-5">
 
         <h1 className="text-2xl font-bold mb-6">
@@ -13,19 +27,9 @@ function Workspace() {
           <li className="bg-gray-700 p-2 rounded">
             General
           </li>
-
-          <li className="hover:bg-gray-700 p-2 rounded cursor-pointer">
-            Development
-          </li>
-
-          <li className="hover:bg-gray-700 p-2 rounded cursor-pointer">
-            Testing
-          </li>
         </ul>
 
       </div>
-
-      {/* Chat Area */}
 
       <div className="flex-1 flex flex-col">
 
@@ -33,15 +37,9 @@ function Workspace() {
           General Chat
         </div>
 
-        <div className="flex-1 p-5 overflow-y-auto">
+        <div className="flex-1 p-5">
 
-          <div className="mb-4">
-            <strong>John:</strong> Hello 👋
-          </div>
-
-          <div className="mb-4">
-            <strong>Madhura:</strong> Hi Everyone!
-          </div>
+          <p>Start chatting...</p>
 
         </div>
 
@@ -49,11 +47,16 @@ function Workspace() {
 
           <input
             type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             placeholder="Type your message..."
             className="flex-1 border rounded px-3 py-2"
           />
 
-          <button className="ml-3 bg-blue-600 text-white px-5 rounded">
+          <button
+            onClick={sendMessage}
+            className="ml-3 bg-blue-600 text-white px-5 rounded"
+          >
             Send
           </button>
 

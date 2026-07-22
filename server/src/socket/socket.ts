@@ -11,11 +11,22 @@ export const initializeSocket = (server: any) => {
   });
 
   io.on("connection", (socket) => {
+
     console.log("✅ User Connected:", socket.id);
 
-    socket.on("disconnect", () => {
-      console.log("❌ User Disconnected:", socket.id);
+    // Receive message from client
+    socket.on("chat message", (message) => {
+
+      console.log("📩 Message Received:", message);
+
     });
+
+    socket.on("disconnect", () => {
+
+      console.log("❌ User Disconnected:", socket.id);
+
+    });
+
   });
 
   return io;
