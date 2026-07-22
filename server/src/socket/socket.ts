@@ -17,9 +17,12 @@ export const initializeSocket = (server: any) => {
     // Receive message from client
     socket.on("chat message", (message) => {
 
-      console.log("📩 Message Received:", message);
+  console.log("📩 Message Received:", message);
 
-    });
+  // Broadcast message to every connected client
+  io.emit("chat message", message);
+
+});
 
     socket.on("disconnect", () => {
 

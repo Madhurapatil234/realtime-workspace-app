@@ -1,9 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import socket from "../services/socket";
 
 function Workspace() {
 
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState<string[]>([]);
+
+  useEffect(() => {
+
+    socket.on("chat message", (msg: string) => {
+      setMessages((prev) => [...prev, msg]);
+    });
+
+    return () => {
+      socket.off("chat message");
+    };
+
+  }, []);
 
   const sendMessage = () => {
 
@@ -17,6 +30,7 @@ function Workspace() {
   return (
     <div className="flex h-screen">
 
+      {/* Sidebar */}
       <div className="w-64 bg-gray-900 text-white p-5">
 
         <h1 className="text-2xl font-bold mb-6">
@@ -31,24 +45,35 @@ function Workspace() {
 
       </div>
 
+      {/* Chat Area */}
+
       <div className="flex-1 flex flex-col">
 
         <div className="bg-blue-600 text-white p-4 text-xl font-semibold">
           General Chat
         </div>
 
-        <div className="flex-1 p-5">
+        <div className="flex-1 p-5 overflow-y-auto">
 
-          <p>Start chatting...</p>
+          {messages.map((msg, index) => (
+
+            <div
+              key={index}
+              className="mb-3 p-3 bg-gray-100 rounded"
+            >
+              {msg}
+            </div>
+
+          ))}
 
         </div>
 
         <div className="p-4 border-t flex">
 
           <input
-            type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            type="text"
             placeholder="Type your message..."
             className="flex-1 border rounded px-3 py-2"
           />
