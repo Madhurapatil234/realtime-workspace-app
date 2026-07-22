@@ -1,7 +1,7 @@
-import Login from "./pages/Login";
+import Workspace from "./pages/Workspace";
 
 function App() {
-  return <Login />;
+  return <Workspace />;
 }
 
 export default App;
